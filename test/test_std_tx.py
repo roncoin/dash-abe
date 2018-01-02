@@ -1,6 +1,6 @@
 # Copyright(C) 2014 by Abe developers.
 
-# test_std_tx.py: test Abe importing standard Bitcoin transaction types.
+# test_std_tx.py: test Abe importing standard Dagra transaction types.
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as

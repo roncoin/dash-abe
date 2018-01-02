@@ -10,7 +10,7 @@ setup(
     package_data = {'Abe': ['htdocs/*']},
     author       = "John Tobey",
     author_email = "jtobey@john-edwin-tobey.org",
-    url          = "https://github.com/bitcoin-abe/bitcoin-abe",
+    url          = "https://github.com/dagra-abe/dagra-abe",
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',
@@ -32,13 +32,13 @@ setup(
         'Topic :: Security :: Cryptography',
         #'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    description  = "Abe: a free block chain browser for Bitcoin-based currencies.",
-    long_description = """Abe reads the Bitcoin block chain from disk, loads
+    description  = "Abe: a free block chain browser for Dagra-based currencies.",
+    long_description = """Abe reads the Dagra block chain from disk, loads
 it into a database, indexes it, and provides a web interface to search
-and navigate it.  Abe works with several Bitcoin-derived currencies,
+and navigate it.  Abe works with several Dagra-derived currencies,
 including Namecoin and LiteCoin.
 
-Abe draws inspiration from Bitcoin Block Explorer (BBE,
+Abe draws inspiration from Dagra Block Explorer (BBE,
 http://blockexplorer.com/) and seeks some level of compatibility with
 it but uses a completely new implementation.""",
     )

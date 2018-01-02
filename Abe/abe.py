@@ -32,7 +32,7 @@ import version
 import DataStore
 import readconf
 
-# bitcointools -- modified deserialize.py to return raw transaction
+# dagratools -- modified deserialize.py to return raw transaction
 import deserialize
 import util  # Added functions.
 import base58
@@ -41,11 +41,11 @@ __version__ = version.__version__
 
 ABE_APPNAME = "Abe"
 ABE_VERSION = __version__
-ABE_URL = 'https://github.com/bitcoin-abe/bitcoin-abe'
+ABE_URL = 'https://github.com/dagra-abe/dagra-abe'
 
 COPYRIGHT_YEARS = '2011'
 COPYRIGHT = "Abe developers"
-COPYRIGHT_URL = 'https://github.com/bitcoin-abe'
+COPYRIGHT_URL = 'https://github.com/dagra-abe'
 
 DONATIONS_BTC = '1PWC7PNHL1SgvZaN7xEtygenKjWobWsCuf'
 DONATIONS_NMC = 'NJ3MSELK1cWnqUa6xhF2wUYAnz3RSrWXcK'
@@ -295,7 +295,7 @@ class Abe:
             '<tr><th>Currency</th><th>Code</th><th>Block</th><th>Time</th>',
             '<th>Started</th><th>Age (days)</th><th>Coins Created</th>',
             '<th>Avg Coin Age</th><th>',
-            '% <a href="https://en.bitcoin.it/wiki/Bitcoin_Days_Destroyed">',
+            '% <a href="https://en.dagra.it/wiki/Dagra_Days_Destroyed">',
             'CoinDD</a></th>',
             '</tr>\n']
         now = time.time() - EPOCH1970
@@ -487,7 +487,7 @@ class Abe:
                  '<th>Difficulty</th><th>Outstanding</th>',
                  '<th>Average Age</th><th>Chain Age</th>',
                  '<th>% ',
-                 '<a href="https://en.bitcoin.it/wiki/Bitcoin_Days_Destroyed">',
+                 '<a href="https://en.dagra.it/wiki/Dagra_Days_Destroyed">',
                  'CoinDD</a></th>',
                  ['<th>Satoshi-seconds</th>',
                   '<th>Total ss</th>']
@@ -997,7 +997,7 @@ class Abe:
                 if   t == 'tx':    name = 'Transaction'
                 elif t == 'block': name = 'Block'
                 else:
-                    # XXX Use Bitcoin address version until we implement
+                    # XXX Use Dagra address version until we implement
                     # /pubkey/... for this to link to.
                     return abe._found_address(
                         util.hash_to_address('\0', abe.store.binout(row[0])))
@@ -1388,7 +1388,7 @@ class Abe:
             version, hash = chain.address_version.encode('hex'), arg1
 
         else:
-            # Default: Bitcoin address starting with "1".
+            # Default: Dagra address starting with "1".
             version, hash = '00', arg1
 
         try:
@@ -1404,7 +1404,7 @@ class Abe:
         if pubkey is None:
             return \
                 "Returns the 160-bit hash of PUBKEY.\n" \
-                "For example, the Bitcoin genesis block's output public key," \
+                "For example, the Dagra genesis block's output public key," \
                 " seen in its transaction output scriptPubKey, starts with\n" \
                 "04678afdb0fe..., and its hash is" \
                 " 62E907B15CBF27D5425399EBF6F0FB50EBB88F18, corresponding" \
@@ -2054,7 +2054,7 @@ def main(argv):
     elif argv[0] in ('-h', '--help'):
         print ("""Usage: python -m Abe.abe [-h] [--config=FILE] [--CONFIGVAR=VALUE]...
 
-A Bitcoin block chain browser.
+A Dagra block chain browser.
 
   --help                    Show this help message and exit.
   --version                 Show the program version and exit.

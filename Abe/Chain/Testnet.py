@@ -18,7 +18,7 @@ from .Sha256Chain import Sha256Chain
 
 class Testnet(Sha256Chain):
     """
-    The original bitcoin test blockchain.
+    The original dagra test blockchain.
     """
     def __init__(chain, **kwargs):
         chain.name = 'Testnet'
@@ -29,5 +29,5 @@ class Testnet(Sha256Chain):
         Sha256Chain.__init__(chain, **kwargs)
 
     # XXX
-    #datadir_conf_file_name = "bitcoin.conf"
+    #datadir_conf_file_name = "dagra.conf"
     #datadir_rpcport = 8332

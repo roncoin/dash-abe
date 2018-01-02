@@ -28,7 +28,7 @@ def parse_setting(setting, vds):
   if setting[0] == "f":  # flag (boolean) settings
     return str(vds.read_boolean())
   elif setting == "addrIncoming":
-    return "" # bitcoin 0.4 purposely breaks addrIncoming setting in encrypted wallets.
+    return "" # dagra 0.4 purposely breaks addrIncoming setting in encrypted wallets.
   elif setting[0:4] == "addr": # CAddress
     d = parse_CAddress(vds)
     return deserialize_CAddress(d)
@@ -159,7 +159,7 @@ def deserialize_WalletTx(d, transaction_index=None, owner_keys=None):
 
 # The CAuxPow (auxiliary proof of work) structure supports merged mining.
 # A flag in the block version field indicates the structure's presence.
-# As of 8/2011, the Original Bitcoin Client does not use it.  CAuxPow
+# As of 8/2011, the Original Dagra Client does not use it.  CAuxPow
 # originated in Namecoin; see
 # https://github.com/vinced/namecoin/blob/mergedmine/doc/README_merged-mining.md.
 def parse_AuxPow(vds):
@@ -325,7 +325,7 @@ def extract_public_key(bytes, version='\x00'):
   if match_decoded(decoded, match):
     return public_key_to_bc_address(decoded[0][1], version=version)
 
-  # Pay-by-Bitcoin-address TxOuts look like:
+  # Pay-by-Dagra-address TxOuts look like:
   # DUP HASH160 20 BYTES:... EQUALVERIFY CHECKSIG
   match = [ opcodes.OP_DUP, opcodes.OP_HASH160, opcodes.OP_PUSHDATA4, opcodes.OP_EQUALVERIFY, opcodes.OP_CHECKSIG ]
   if match_decoded(decoded, match):

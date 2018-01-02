@@ -26,7 +26,7 @@ def create(policy, **kwargs):
 PUBKEY_HASH_LENGTH = 20
 MAX_MULTISIG_KEYS = 3
 
-# Template to match a pubkey hash ("Bitcoin address transaction") in
+# Template to match a pubkey hash ("Dagra address transaction") in
 # txout_scriptPubKey.  OP_PUSHDATA4 matches any data push.
 SCRIPT_ADDRESS_TEMPLATE = [
     opcodes.OP_DUP, opcodes.OP_HASH160, opcodes.OP_PUSHDATA4, opcodes.OP_EQUALVERIFY, opcodes.OP_CHECKSIG ]
@@ -204,7 +204,7 @@ class BaseChain(object):
             return SCRIPT_TYPE_BURN, None
 
         elif len(decoded) >= 4 and decoded[-1][0] == opcodes.OP_CHECKMULTISIG:
-            # cf. bitcoin/src/script.cpp:Solver
+            # cf. dagra/src/script.cpp:Solver
             n = decoded[-2][0] + 1 - opcodes.OP_1
             m = decoded[0][0] + 1 - opcodes.OP_1
             if 1 <= m <= n <= MAX_MULTISIG_KEYS and len(decoded) == 3 + n and \
@@ -221,5 +221,5 @@ class BaseChain(object):
     def script_hash(chain, script):
         return chain.pubkey_hash(script)
 
-    datadir_conf_file_name = "bitcoin.conf"
+    datadir_conf_file_name = "dagra.conf"
     datadir_rpcport = 8332

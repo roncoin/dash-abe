@@ -28,22 +28,22 @@ try:
 except Exception:
     import ripemd_via_hashlib as RIPEMD160
 
-# This function comes from bitcointools, bct-LICENSE.txt.
+# This function comes from dagratools, bct-LICENSE.txt.
 def determine_db_dir():
     import os
     import os.path
     import platform
     if platform.system() == "Darwin":
-        return os.path.expanduser("~/Library/Application Support/Bitcoin/")
+        return os.path.expanduser("~/Library/Application Support/Dagra/")
     elif platform.system() == "Windows":
-        return os.path.join(os.environ['APPDATA'], "Bitcoin")
-    return os.path.expanduser("~/.bitcoin")
+        return os.path.join(os.environ['APPDATA'], "Dagra")
+    return os.path.expanduser("~/.dagra")
 
-# This function comes from bitcointools, bct-LICENSE.txt.
+# This function comes from dagratools, bct-LICENSE.txt.
 def long_hex(bytes):
     return bytes.encode('hex_codec')
 
-# This function comes from bitcointools, bct-LICENSE.txt.
+# This function comes from dagratools, bct-LICENSE.txt.
 def short_hex(bytes):
     t = bytes.encode('hex_codec')
     if len(t) < 11:
@@ -86,7 +86,7 @@ def work_to_difficulty(work):
     return work * ((1 << 224) - 1) * 1000 / (1 << 256) / 1000.0
 
 def target_to_work(target):
-    # XXX will this round using the same rules as C++ Bitcoin?
+    # XXX will this round using the same rules as C++ Dagra?
     return int((1 << 256) / (target + 1))
 
 def calculate_work(prev_work, nBits):

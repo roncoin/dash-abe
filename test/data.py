@@ -21,7 +21,7 @@ def testnet14(db):
     blocks = []
     gen = datagen.Gen(chain=chain, db=db, blocks=blocks)
 
-    # The Bitcoin/Testnet genesis transaction.
+    # The Dagra/Testnet genesis transaction.
     genesis_coinbase = gen.coinbase(
         scriptSig=gen.encode_script(
             '\xff\xff\x00\x1d', '\x04', 'The Times 03/Jan/2009 Chancellor on brink of second bailout for banks'),

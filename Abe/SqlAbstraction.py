@@ -66,7 +66,7 @@ class SqlAbstraction(object):
             pass
 
         # Binary I/O with the database.
-        # Reversed versions exist for Bitcoin hashes; since the
+        # Reversed versions exist for Dagra hashes; since the
         # protocol treats them as 256-bit integers and represents them
         # as little endian, we have to reverse them in hex to satisfy
         # human expectations.

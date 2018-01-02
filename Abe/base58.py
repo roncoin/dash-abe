@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""encode/decode base58 in the same way that Bitcoin does"""
+"""encode/decode base58 in the same way that Dagra does"""
 
 import math
 
@@ -22,7 +22,7 @@ def b58encode(v):
     long_value = div
   result = __b58chars[long_value] + result
 
-  # Bitcoin does a little leading-zero-compression:
+  # Dagra does a little leading-zero-compression:
   # leading 0-bytes in the input become leading-1s
   nPad = 0
   for c in v:
@@ -59,7 +59,7 @@ def b58decode(v, length):
 try:
   # Python Crypto library is at: http://www.dlitz.net/software/pycrypto/
   # Needed for RIPEMD160 hash function, used to compute
-  # Bitcoin addresses from internal public keys.
+  # Dagra addresses from internal public keys.
   import Crypto.Hash.SHA256 as SHA256
   import Crypto.Hash.RIPEMD160 as RIPEMD160
   have_crypto = True

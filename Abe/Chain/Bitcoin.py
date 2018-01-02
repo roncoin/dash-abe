@@ -16,9 +16,9 @@
 
 from .Sha256Chain import Sha256Chain
 
-class Bitcoin(Sha256Chain):
+class Dagra(Sha256Chain):
     def __init__(chain, **kwargs):
-        chain.name = 'Bitcoin'
+        chain.name = 'Dagra'
         chain.code3 = 'BTC'
         chain.address_version = '\x00'
         chain.script_addr_vers = '\x05'

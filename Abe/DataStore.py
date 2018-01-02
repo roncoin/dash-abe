@@ -30,7 +30,7 @@ import SqlAbstraction
 
 import Chain
 
-# bitcointools -- modified deserialize.py to return raw transaction
+# dagratools -- modified deserialize.py to return raw transaction
 import BCDataStream
 import deserialize
 import util
@@ -60,7 +60,7 @@ CONFIG_DEFAULTS = {
 WORK_BITS = 304  # XXX more than necessary.
 
 CHAIN_CONFIG = [
-    {"chain":"Bitcoin"},
+    {"chain":"Dagra"},
     {"chain":"Testnet"},
     {"chain":"Namecoin"},
     {"chain":"Weeds", "policy":"Sha256Chain",
@@ -117,7 +117,7 @@ class MalformedAddress(ValueError):
 class DataStore(object):
 
     """
-    Bitcoin data storage class based on DB-API 2 and standard SQL with
+    Dagra data storage class based on DB-API 2 and standard SQL with
     workarounds to support SQLite3, PostgreSQL/psycopg2, MySQL,
     Oracle, ODBC, and IBM DB2.
     """
@@ -133,7 +133,7 @@ class DataStore(object):
         connect() method, or None for no argument, or a list of
         arguments, or a dictionary of named arguments.
 
-        args.datadir names Bitcoin data directories containing
+        args.datadir names Dagra data directories containing
         blk0001.dat to scan for new blocks.
         """
         if args.datadir is None:
@@ -354,7 +354,7 @@ class DataStore(object):
         #print("datadirs: %r" % datadirs)
 
         # By default, scan every dir we know.  This doesn't happen in
-        # practise, because abe.py sets ~/.bitcoin as default datadir.
+        # practise, because abe.py sets ~/.dagra as default datadir.
         if store.args.datadir is None:
             store.datadirs = datadirs.values()
             return
@@ -499,7 +499,7 @@ class DataStore(object):
         return store.chains_by.name.get(name, None)
 
     def get_default_chain(store):
-        store.log.debug("Falling back to default (Bitcoin) policy.")
+        store.log.debug("Falling back to default (Dagra) policy.")
         return Chain.create(None)
 
     def get_ddl(store, key):
@@ -641,7 +641,7 @@ store._ddl['configvar'],
     chain_id    NUMERIC(10) NULL
 )""",
 
-# A block of the type used by Bitcoin.
+# A block of the type used by Dagra.
 """CREATE TABLE block (
     block_id      NUMERIC(14) NOT NULL PRIMARY KEY,
     block_hash    BINARY(32)  UNIQUE NOT NULL,
@@ -719,7 +719,7 @@ store._ddl['configvar'],
     FOREIGN KEY (next_block_id) REFERENCES block (block_id)
 )""",
 
-# A transaction of the type used by Bitcoin.
+# A transaction of the type used by Dagra.
 """CREATE TABLE tx (
     tx_id         NUMERIC(26) NOT NULL PRIMARY KEY,
     tx_hash       BINARY(32)  UNIQUE NOT NULL,
@@ -742,8 +742,8 @@ store._ddl['configvar'],
 )""",
 """CREATE INDEX x_block_tx_tx ON block_tx (tx_id)""",
 
-# A public key for sending bitcoins.  PUBKEY_HASH is derivable from a
-# Bitcoin or Testnet address.
+# A public key for sending dagras.  PUBKEY_HASH is derivable from a
+# Dagra or Testnet address.
 """CREATE TABLE pubkey (
     pubkey_id     NUMERIC(26) NOT NULL PRIMARY KEY,
     pubkey_hash   BINARY(20)  UNIQUE NOT NULL,
@@ -2533,7 +2533,7 @@ store._ddl['txout_approx'],
     def catch_up_rpc(store, dircfg):
         """
         Load new blocks using RPC.  Requires running *coind supporting
-        getblockhash, getblock, and getrawtransaction.  Bitcoind v0.8
+        getblockhash, getblock, and getrawtransaction.  Dagrad v0.8
         requires the txindex configuration option.  Requires chain_id
         in the datadir table.
         """
@@ -2578,8 +2578,8 @@ store._ddl['txout_approx'],
                 if e.code in (-1, -5, -8):
                     # Block number out of range...
                     #  -1 is legacy code (pre-10.0), generic error
-                    #  -8 (RPC_INVALID_PARAMETER) first seen in bitcoind 10.x
-                    #  -5 (RPC_NOT_FOUND): Been suggested in #bitcoin-dev as more appropriate
+                    #  -8 (RPC_INVALID_PARAMETER) first seen in dagrad 10.x
+                    #  -5 (RPC_NOT_FOUND): Been suggested in #dagra-dev as more appropriate
                     return None
                 raise
 
@@ -2626,7 +2626,7 @@ store._ddl['txout_approx'],
         try:
 
             # Get block hash at height, and at the same time, test
-            # bitcoind connectivity.
+            # dagrad connectivity.
             try:
                 next_hash = get_blockhash(height)
             except util.JsonrpcException, e:
@@ -2717,7 +2717,7 @@ store._ddl['txout_approx'],
                     store.imported_bytes(tx['size'])
 
         except util.JsonrpcMethodNotFound, e:
-            store.log.debug("bitcoind %s not supported", e.method)
+            store.log.debug("dagrad %s not supported", e.method)
             return False
 
         except InvalidBlock, e:
@@ -2739,7 +2739,7 @@ store._ddl['txout_approx'],
             try:
                 file = open(blkfile['name'], "rb")
             except IOError, e:
-                # Early bitcoind used blk0001.dat to blk9999.dat.
+                # Early dagrad used blk0001.dat to blk9999.dat.
                 # Now it uses blocks/blk00000.dat to blocks/blk99999.dat.
                 # Abe starts by assuming the former scheme.  If we don't
                 # find the expected file but do see blocks/blk00000.dat,
@@ -2840,7 +2840,7 @@ store._ddl['txout_approx'],
             # Assume no real magic number starts with a NUL.
             if magic[0] == "\0":
                 if filenum > 99999 and magic == "\0\0\0\0":
-                    # As of Bitcoin 0.8, files often end with a NUL span.
+                    # As of Dagra 0.8, files often end with a NUL span.
                     ds.read_cursor = offset
                     break
                 # Skip NUL bytes at block end.

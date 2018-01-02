@@ -1,6 +1,6 @@
 # Copyright(C) 2014 by Abe developers.
 
-# test_btc200.py: test Abe loading through Bitcoin Block 200.
+# test_btc200.py: test Abe loading through Dagra Block 200.
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -94,7 +94,7 @@ def test_tx_cc(b182t1):
     assert len(b182t1['chain_candidates']) == 1
 
 def test_tx_chain_name(b182t1):
-    assert b182t1['chain_candidates'][0]['chain'].name == 'Bitcoin'
+    assert b182t1['chain_candidates'][0]['chain'].name == 'Dagra'
 
 def test_tx_in_longest(b182t1):
     assert b182t1['chain_candidates'][0]['in_longest']

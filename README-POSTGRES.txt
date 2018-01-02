@@ -1,6 +1,6 @@
 PostgreSQL on Debian/Ubuntu.
 
-Run the Bitcoin client to ensure that your copy of the block chain is
+Run the Dagra client to ensure that your copy of the block chain is
 up to date.
 
 Choose or create a system account to run Abe.  Replace USER with its

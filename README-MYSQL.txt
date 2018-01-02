@@ -1,6 +1,6 @@
 Abe setup for MySQL: 8 easy steps.
 
-1. Run the Bitcoin client once.  It'll create a .bitcoin directory in
+1. Run the Dagra client once.  It'll create a .dagra directory in
 your home directory, along with some other necessary files.
 
 2. Install Python 2.7 and pycrypto and python-mysqldb.  The Debian/Ubuntu packages 
@@ -121,7 +121,7 @@ Compared to Innodb, TokuDB has the following advantages:
   requires linking txin's, and the lookup for those slows inserts, although it
   remains order of magnitude than InnoDB).
 - Heavily reduced disk IO, excellent for slow disks, reduces contention with
-  other loads like the Bitcoin Client.
+  other loads like the Dagra Client.
 - Extremely fast backup restoration (tested from a SQL dump - using LOAD DATA
   INFILE could be even faster!)
 

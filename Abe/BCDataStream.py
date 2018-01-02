@@ -1,5 +1,5 @@
 #
-# Workalike python implementation of Bitcoin's CDataStream class.
+# Workalike python implementation of Dagra's CDataStream class.
 #
 import struct
 import StringIO
@@ -36,7 +36,7 @@ class BCDataStream(object):
     # 0 to 252 :  1-byte-length followed by bytes (if any)
     # 253 to 65,535 : byte'253' 2-byte-length followed by bytes
     # 65,536 to 4,294,967,295 : byte '254' 4-byte-length followed by bytes
-    # ... and the Bitcoin client is coded to understand:
+    # ... and the Dagra client is coded to understand:
     # greater than 4,294,967,295 : byte '255' 8-byte-length followed by bytes of string
     # ... but I don't think it actually handles any strings that big.
     if self.input is None:

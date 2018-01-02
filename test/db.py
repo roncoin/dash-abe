@@ -146,7 +146,7 @@ class MysqlDB(ServerDB):
         ServerDB.__init__(db, 'MySQLdb')
 
     def get_connect_args(db):
-        return {'user': 'abe', 'passwd': 'Bitcoin', 'db': 'abe', 'unix_socket': db.socket}
+        return {'user': 'abe', 'passwd': 'Dagra', 'db': 'abe', 'unix_socket': db.socket}
 
     def install_server(db):
         db.socket = str(db.installation_dir.join('mysql.sock'))
@@ -167,7 +167,7 @@ class MysqlDB(ServerDB):
         for t in range(tries):
             try:
                 with db.root() as cur:
-                    cur.execute("CREATE USER 'abe'@'localhost' IDENTIFIED BY 'Bitcoin'")
+                    cur.execute("CREATE USER 'abe'@'localhost' IDENTIFIED BY 'Dagra'")
                     return server
             except MySQLdb.OperationalError as e:
                 if t+1 == tries:
@@ -198,7 +198,7 @@ class PostgresDB(ServerDB):
         ServerDB.__init__(db, 'psycopg2')
 
     def get_connect_args(db):
-        return {'user': 'abe', 'password': 'Bitcoin', 'database': 'abe', 'host': str(db.installation_dir)}
+        return {'user': 'abe', 'password': 'Dagra', 'database': 'abe', 'host': str(db.installation_dir)}
 
     def install_server(db):
         db.bindir = subprocess.Popen(['pg_config', '--bindir'], stdout=subprocess.PIPE).communicate()[0].rstrip()
@@ -218,7 +218,7 @@ class PostgresDB(ServerDB):
             try:
                 with db.root() as cur:
                     cur.execute("COMMIT")  # XXX
-                    cur.execute("CREATE USER abe UNENCRYPTED PASSWORD 'Bitcoin'")
+                    cur.execute("CREATE USER abe UNENCRYPTED PASSWORD 'Dagra'")
                     cur.execute("COMMIT")
                 return server
             except psycopg2.OperationalError as e:

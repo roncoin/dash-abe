@@ -677,7 +677,7 @@ def config_clob(store):
     store.save_configvar("clob_type")
 
 def clear_bad_addresses(store):
-    """Set address=Unknown for the bogus outputs in Bitcoin 71036."""
+    """Set address=Unknown for the bogus outputs in Dagra 71036."""
     bad_tx = [
         'a288fec5559c3f73fd3d93db8e8460562ebfe2fcf04a5114e8d0f2920a6270dc',
         '2a0597e665ac3d1cabeede95cedf907934db7f639e477b3c77b242140d8cf728',
