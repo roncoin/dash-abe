@@ -34,7 +34,7 @@ import Abe.DataStore
 import Abe.readconf
 import operator
 
-# dagratools -- modified deserialize.py to return raw transaction
+# dowintools -- modified deserialize.py to return raw transaction
 import Abe.deserialize
 import Abe.util  # Added functions.
 import Abe.base58
@@ -115,7 +115,7 @@ class Aml(Abe):
 </ul>
 <br/><br/>
 <p style="font-size: smaller">
-This site is powered by <span style="font-style: italic"> <a href="https://github.com/dagra-abe/dagra-abe">dagra-ABE</a></span>
+This site is powered by <span style="font-style: italic"> <a href="https://github.com/dowin-abe/dowin-abe">dowin-ABE</a></span>
 &nbsp;&nbsp;source:<a href="ecdsa.py">[1]</a>&nbsp;<a href="abe.diff">[2]</a>
 </p>"""
                    ]
@@ -419,7 +419,7 @@ This site is powered by <span style="font-style: italic"> <a href="https://githu
                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
                <script type="text/javascript" src="http://ecdsa.org/jquery.qrcode.min.js"></script>
                <div id="qrcode"></div>
-               <script>jQuery('#qrcode').qrcode("dagra:%s");</script>  
+               <script>jQuery('#qrcode').qrcode("dowin:%s");</script>  
                </body></html>"""%address
 
         abe.do_raw(page, ret)
@@ -515,7 +515,7 @@ This site is powered by <span style="font-style: italic"> <a href="https://githu
         body += [ '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>',
                   '<script type="text/javascript" src="http://ecdsa.org/jquery.qrcode.min.js"></script>',
                   '<div style="float:right;" id="qrcode"></div>',
-                  "<script>jQuery('#qrcode').qrcode(\"dagra:"+address+"\");</script>"  ]
+                  "<script>jQuery('#qrcode').qrcode(\"dowin:"+address+"\");</script>"  ]
 
 
         body += abe.short_link(page, 'a/' + address[:10])
@@ -597,7 +597,7 @@ This site is powered by <span style="font-style: italic"> <a href="https://githu
         if not tx_hash and not address:
             page['title'] =  'Annotations'
             page['body'] += [ 'This website allows you to annotate the Dagra blockchain.<br/><br/>',
-                              'You will need a version of dagrad that has the "signmessage" command.<br/>'
+                              'You will need a version of dowind that has the "signmessage" command.<br/>'
                               'In order to annotate an address or transaction, first <a href="search">find</a> the corresponding page, then follow the "[+]" link. <a href="http://ecdsa.org/annotate?tx=e357fece18a4191be8236570c7dc309ec6ac04473317320b5e8b9ab7cd023549">(example here)</a><br/><br/>']
             
             page['body'] += [ '<h3>Annotated addresses.</h3>']
@@ -651,8 +651,8 @@ This site is powered by <span style="font-style: italic"> <a href="https://githu
                     return
 
                 # check signature
-                import dagrarpc
-                conn = dagrarpc.connect_to_local()
+                import dowinrpc
+                conn = dowinrpc.connect_to_local()
                 message = message.replace("\r\n","\\n").replace("!","\\!").replace("$","\\$")
                 print "verifymessage:", address, signature, repr(message)
                 try:
@@ -719,7 +719,7 @@ This site is powered by <span style="font-style: italic"> <a href="https://githu
                     'Message:<br/><textarea id="text" onkeyup="change_text(this.value);" name="comment" cols="80" value=""></textarea><br/><br/>\n'
                     'You must sign your message with one of the input addresses of involved in the transaction.<br/>\n'
                     'The signature will be returned by the following command line:<br/>\n'
-                    '<pre>dagrad signmessage <span id="saddress">'+in_addresses[0]+'</span> "'+tx_hash+':<span id="stext">your text</span>"</pre>\n'
+                    '<pre>dowind signmessage <span id="saddress">'+in_addresses[0]+'</span> "'+tx_hash+':<span id="stext">your text</span>"</pre>\n'
                     'Signature:<br/><input name="signature" value="" style="width:500px;"/><br/>'
                     '<input name="tx" type="hidden" value="'+tx_hash+'" />'
                     '<button type="submit">Submit</button>\n'
@@ -733,8 +733,8 @@ This site is powered by <span style="font-style: italic"> <a href="https://githu
 
             if message or signature:
                 # check signature
-                import dagrarpc
-                conn = dagrarpc.connect_to_local()
+                import dowinrpc
+                conn = dowinrpc.connect_to_local()
                 message = message.replace("\n","\\n").replace("!","\\!").replace("$","\\$")
                 print "verifymessage:", address, signature, message
                 try:
@@ -790,7 +790,7 @@ This site is powered by <span style="font-style: italic"> <a href="https://githu
                     'Message:<br/><textarea id="text" onkeyup="change_text(this.value);" name="comment" cols="80" value=""></textarea><br/><br/>\n'
                     'You must sign your message with the addresses.<br/>\n'
                     'The signature will be returned by the following command line:<br/>\n'
-                    '<pre>dagrad signmessage <span id="saddress">'+address+'</span> "<span id="stext">your text</span>"</pre>\n'
+                    '<pre>dowind signmessage <span id="saddress">'+address+'</span> "<span id="stext">your text</span>"</pre>\n'
                     'Signature:<br/><input name="signature" value="" style="width:500px;"/><br/>'
                     '<input name="address" type="hidden" value="'+address+'" />'
                     '<button type="submit">Submit</button>\n'
@@ -820,8 +820,8 @@ This site is powered by <span style="font-style: italic"> <a href="https://githu
                 page['body'] = ['<p>Not a valid amount.</p>']
                 return
             # check signature
-            import dagrarpc
-            conn = dagrarpc.connect_to_local()
+            import dowinrpc
+            conn = dowinrpc.connect_to_local()
             print address, signature
             try:
                 v = conn.verifymessage(address,signature, "fundraiser")
@@ -891,9 +891,9 @@ Once the threshold is reached, the content is displayed in place of the donation
                 'Target amount:<br/><input name="target" value="" style="width:500px;"/><br/><br/>'
                 'Secret (will be displayed in place of the widget when the donation target is reached. Html, max. 1024 bytes):<br/>'
                 '<textarea name="secret" value="" style="width:500px;"></textarea><br/><br/>'
-                'You must provide a signature in order to demonstrate that you own the dagra address of the fundraiser.<br/>'
+                'You must provide a signature in order to demonstrate that you own the dowin address of the fundraiser.<br/>'
                 'The signature will be returned by the following command line:<br/>\n'
-                '<pre>dagrad signmessage <span id="saddress"></span> <span id="stext">fundraiser</span></pre>\n'
+                '<pre>dowind signmessage <span id="saddress"></span> <span id="stext">fundraiser</span></pre>\n'
                 'Signature:<br/><input name="signature" value="" style="width:500px;"/><br/>'
                 '<button type="submit">Submit</button>\n'
                 '</form>\n'

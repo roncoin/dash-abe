@@ -19,7 +19,7 @@ Install required packages:
 
 Change directory to the Abe distribution and install Abe:
 
-    cd dagra-abe
+    cd dowin-abe
     python setup.py install
 
 Replace YOUR.ABE.DOMAIN below with a domain that resolves to this

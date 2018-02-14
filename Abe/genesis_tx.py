@@ -1,7 +1,7 @@
 # Copyright(C) 2013 by Abe developers.
 
 # genesis_tx.py: known transactions unavailable through RPC for
-# historical reasons: https://dagratalk.org/index.php?topic=119530.0
+# historical reasons: https://dowintalk.org/index.php?topic=119530.0
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -20,9 +20,9 @@
 def get(tx_hash_hex):
     """
     Given the hexadecimal hash of the genesis transaction (as shown
-    by, e.g., "dagrad getblock 0") return the hexadecimal raw
+    by, e.g., "dowind getblock 0") return the hexadecimal raw
     transaction.  This works around a Dagrad limitation described at
-    https://dagratalk.org/index.php?topic=119530.0
+    https://dowintalk.org/index.php?topic=119530.0
     """
 
     # Main Dagra chain:

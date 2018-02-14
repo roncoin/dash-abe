@@ -1,5 +1,5 @@
 Abe: a free block chain browser for Dagra-based currencies.
-https://github.com/dagra-abe/dagra-abe
+https://github.com/dowin-abe/dowin-abe
 
     Copyright(C) 2011,2012,2013 by Abe developers.
     License: GNU Affero General Public License, see the file LICENSE.txt.
@@ -52,7 +52,7 @@ safe.  Abe may need some fixes to avoid skipping blocks while current
 and future Dagra versions run.
 
 NovaCoin and CryptoCash support depends on the ltc_scrypt module
-available from https://github.com/CryptoManiac/dagra-abe (see
+available from https://github.com/CryptoManiac/dowin-abe (see
 README-SCRYPT.txt).
 
 Hirocoin (and any other X11) support depends on the xcoin_hash module
@@ -140,7 +140,7 @@ To display Namecoin, NovaCoin, or any block chain with data somewhere
 other than the default Dagra directory, specify "datadir" in
 abe.conf, e.g.:
 
-    datadir = /home/dagra/.namecoin
+    datadir = /home/dowin/.namecoin
 
 The datadir directive can include a new chain's basic configuration,
 e.g.:
@@ -164,8 +164,8 @@ More information
 Please see TODO.txt for a list of what is not yet implemented but
 would like to be.
 
-Forum thread: https://dagratalk.org/index.php?topic=22785.0
-Newbies: https://dagratalk.org/index.php?topic=51139.0
+Forum thread: https://dowintalk.org/index.php?topic=22785.0
+Newbies: https://dowintalk.org/index.php?topic=51139.0
 
 Donations appreciated: 1PWC7PNHL1SgvZaN7xEtygenKjWobWsCuf (BTC)
 NJ3MSELK1cWnqUa6xhF2wUYAnz3RSrWXcK (NMC)

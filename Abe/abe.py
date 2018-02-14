@@ -32,7 +32,7 @@ import version
 import DataStore
 import readconf
 
-# dagratools -- modified deserialize.py to return raw transaction
+# dowintools -- modified deserialize.py to return raw transaction
 import deserialize
 import util  # Added functions.
 import base58
@@ -41,11 +41,11 @@ __version__ = version.__version__
 
 ABE_APPNAME = "Abe"
 ABE_VERSION = __version__
-ABE_URL = 'https://github.com/dagra-abe/dagra-abe'
+ABE_URL = 'https://github.com/dowin-abe/dowin-abe'
 
 COPYRIGHT_YEARS = '2011'
 COPYRIGHT = "Abe developers"
-COPYRIGHT_URL = 'https://github.com/dagra-abe'
+COPYRIGHT_URL = 'https://github.com/dowin-abe'
 
 DONATIONS_BTC = '1PWC7PNHL1SgvZaN7xEtygenKjWobWsCuf'
 DONATIONS_NMC = 'NJ3MSELK1cWnqUa6xhF2wUYAnz3RSrWXcK'
@@ -295,7 +295,7 @@ class Abe:
             '<tr><th>Currency</th><th>Code</th><th>Block</th><th>Time</th>',
             '<th>Started</th><th>Age (days)</th><th>Coins Created</th>',
             '<th>Avg Coin Age</th><th>',
-            '% <a href="https://en.dagra.it/wiki/Dagra_Days_Destroyed">',
+            '% <a href="https://en.dowin.it/wiki/Dagra_Days_Destroyed">',
             'CoinDD</a></th>',
             '</tr>\n']
         now = time.time() - EPOCH1970
@@ -487,7 +487,7 @@ class Abe:
                  '<th>Difficulty</th><th>Outstanding</th>',
                  '<th>Average Age</th><th>Chain Age</th>',
                  '<th>% ',
-                 '<a href="https://en.dagra.it/wiki/Dagra_Days_Destroyed">',
+                 '<a href="https://en.dowin.it/wiki/Dagra_Days_Destroyed">',
                  'CoinDD</a></th>',
                  ['<th>Satoshi-seconds</th>',
                   '<th>Total ss</th>']

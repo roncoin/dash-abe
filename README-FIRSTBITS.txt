@@ -7,9 +7,9 @@ algorithm is better defined and all implementations start to use it.
 
 This disagreement has security implications.  Do not rely on the
 firstbits address reported by Abe to match the one on firstbits.com or
-another site when sending dagras.  See this forum thread, and note
+another site when sending dowins.  See this forum thread, and note
 that Abe does not currently implement the algorithm proposed there:
-https://dagratalk.org/index.php?topic=16217.msg960077#msg960077
+https://dowintalk.org/index.php?topic=16217.msg960077#msg960077
 
 This feature is disabled by default due to performance impact.  To
 enable it, add "use-firstbits" to the configuration *before* first
@@ -25,7 +25,7 @@ abe.conf, and run:
 
 I have tried a few dozen addresses, and they match firstbits.com.
 Please report issues in the forum thread
-(https://dagratalk.org/index.php?topic=22785.msg949105#msg949105) or
+(https://dowintalk.org/index.php?topic=22785.msg949105#msg949105) or
 by email, PM, or the github issue system, since I will not spend much
 time testing.
 
@@ -113,7 +113,7 @@ is_descended_from as a stored procedure in databases that support it.
 This would be an optional performance and utility improvement, though.
 Abe would contain the same logic in generic Python code.
 
-An alternative table-based approach is libdagra's span_left and
+An alternative table-based approach is libdowin's span_left and
 span_right.  I have not got my head around the requirements for
 adjusting the span values when new side chains appear, though, and I
 think the more-or-less binary search suffices.

@@ -28,7 +28,7 @@ try:
 except Exception:
     import ripemd_via_hashlib as RIPEMD160
 
-# This function comes from dagratools, bct-LICENSE.txt.
+# This function comes from dowintools, bct-LICENSE.txt.
 def determine_db_dir():
     import os
     import os.path
@@ -37,13 +37,13 @@ def determine_db_dir():
         return os.path.expanduser("~/Library/Application Support/Dagra/")
     elif platform.system() == "Windows":
         return os.path.join(os.environ['APPDATA'], "Dagra")
-    return os.path.expanduser("~/.dagra")
+    return os.path.expanduser("~/.dowin")
 
-# This function comes from dagratools, bct-LICENSE.txt.
+# This function comes from dowintools, bct-LICENSE.txt.
 def long_hex(bytes):
     return bytes.encode('hex_codec')
 
-# This function comes from dagratools, bct-LICENSE.txt.
+# This function comes from dowintools, bct-LICENSE.txt.
 def short_hex(bytes):
     t = bytes.encode('hex_codec')
     if len(t) < 11:

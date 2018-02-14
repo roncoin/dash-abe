@@ -10,7 +10,7 @@ setup(
     package_data = {'Abe': ['htdocs/*']},
     author       = "John Tobey",
     author_email = "jtobey@john-edwin-tobey.org",
-    url          = "https://github.com/dagra-abe/dagra-abe",
+    url          = "https://github.com/dowin-abe/dowin-abe",
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',

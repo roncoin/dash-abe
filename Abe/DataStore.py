@@ -30,7 +30,7 @@ import SqlAbstraction
 
 import Chain
 
-# dagratools -- modified deserialize.py to return raw transaction
+# dowintools -- modified deserialize.py to return raw transaction
 import BCDataStream
 import deserialize
 import util
@@ -354,7 +354,7 @@ class DataStore(object):
         #print("datadirs: %r" % datadirs)
 
         # By default, scan every dir we know.  This doesn't happen in
-        # practise, because abe.py sets ~/.dagra as default datadir.
+        # practise, because abe.py sets ~/.dowin as default datadir.
         if store.args.datadir is None:
             store.datadirs = datadirs.values()
             return
@@ -742,7 +742,7 @@ store._ddl['configvar'],
 )""",
 """CREATE INDEX x_block_tx_tx ON block_tx (tx_id)""",
 
-# A public key for sending dagras.  PUBKEY_HASH is derivable from a
+# A public key for sending dowins.  PUBKEY_HASH is derivable from a
 # Dagra or Testnet address.
 """CREATE TABLE pubkey (
     pubkey_id     NUMERIC(26) NOT NULL PRIMARY KEY,
@@ -2578,8 +2578,8 @@ store._ddl['txout_approx'],
                 if e.code in (-1, -5, -8):
                     # Block number out of range...
                     #  -1 is legacy code (pre-10.0), generic error
-                    #  -8 (RPC_INVALID_PARAMETER) first seen in dagrad 10.x
-                    #  -5 (RPC_NOT_FOUND): Been suggested in #dagra-dev as more appropriate
+                    #  -8 (RPC_INVALID_PARAMETER) first seen in dowind 10.x
+                    #  -5 (RPC_NOT_FOUND): Been suggested in #dowin-dev as more appropriate
                     return None
                 raise
 
@@ -2626,7 +2626,7 @@ store._ddl['txout_approx'],
         try:
 
             # Get block hash at height, and at the same time, test
-            # dagrad connectivity.
+            # dowind connectivity.
             try:
                 next_hash = get_blockhash(height)
             except util.JsonrpcException, e:
@@ -2717,7 +2717,7 @@ store._ddl['txout_approx'],
                     store.imported_bytes(tx['size'])
 
         except util.JsonrpcMethodNotFound, e:
-            store.log.debug("dagrad %s not supported", e.method)
+            store.log.debug("dowind %s not supported", e.method)
             return False
 
         except InvalidBlock, e:
@@ -2739,7 +2739,7 @@ store._ddl['txout_approx'],
             try:
                 file = open(blkfile['name'], "rb")
             except IOError, e:
-                # Early dagrad used blk0001.dat to blk9999.dat.
+                # Early dowind used blk0001.dat to blk9999.dat.
                 # Now it uses blocks/blk00000.dat to blocks/blk99999.dat.
                 # Abe starts by assuming the former scheme.  If we don't
                 # find the expected file but do see blocks/blk00000.dat,

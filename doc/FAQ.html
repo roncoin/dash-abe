@@ -8,28 +8,28 @@
 <body>
 <h1>Abe: Frequently Asked Questions</h1>
 <ul>
-<li><a href="#pubkey_hash">Where in the database are dagra addresses?</a></li>
+<li><a href="#pubkey_hash">Where in the database are dowin addresses?</a></li>
 <li><a href="#address_version">How do I know
     what <code>address_version</code> and <code>code3</code> to use
     for a new alt chain?</a></li>
 </ul>
 
-<p class="q"><a name="pubkey_hash">Where in the database are dagra
+<p class="q"><a name="pubkey_hash">Where in the database are dowin
     addresses?</a></p>
-<p class="a">A <a href="https://en.dagra.it/wiki/Address">dagra
+<p class="a">A <a href="https://en.dowin.it/wiki/Address">dowin
   address</a> is an encoding of
-  the <a href="https://en.dagra.it/wiki/Hash">hash</a> of the public
+  the <a href="https://en.dowin.it/wiki/Hash">hash</a> of the public
   part of a keypair in
-  someone's <a href="https://en.dagra.it/wiki/Wallet">wallet</a>.
+  someone's <a href="https://en.dowin.it/wiki/Wallet">wallet</a>.
   Abe stores only the public key hash,
   in <code>pubkey.pubkey_hash</code>.  Abe converts hash values to
-  dagra addresses as needed using the <code>hash_to_address</code>
+  dowin addresses as needed using the <code>hash_to_address</code>
   function in abe.py.</p>
 <p class="q"><a name="address_version">How do I know
     what <code>address_version</code> and <code>code3</code> to use
     for a new alt chain?</a></p>
 <p class="a"><code>code3</code> can be any 3 characters, e.g. "BTC"
-  for dagra.  If people expect "DVC" (for example) to mean Devcoin,
+  for dowin.  If people expect "DVC" (for example) to mean Devcoin,
   use that.</p>
 
   <p class="a">For <code>address_version</code>, if you have a valid
@@ -47,9 +47,9 @@
 
   <p class="a"><code>address_version</code> comes from the first byte
   of the input to SHA256 used
-  in <a href="https://en.dagra.it/wiki/Protocol_specification#Addresses">address
+  in <a href="https://en.dowin.it/wiki/Protocol_specification#Addresses">address
   computation</a>.  In Dagra as of this writing, this information is
-  in <a href="https://github.com/dagra/dagra/blob/d2291cce9235708f3bc3f95ac1b45164a03cd2ce/src/base58.h#L263">src/base58.h</a>:
+  in <a href="https://github.com/dowin/dowin/blob/d2291cce9235708f3bc3f95ac1b45164a03cd2ce/src/base58.h#L263">src/base58.h</a>:
 
 <pre>
     enum
