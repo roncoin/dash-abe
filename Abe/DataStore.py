@@ -64,7 +64,7 @@ CHAIN_CONFIG = [
     {"chain":"Testnet"},
     {"chain":"Namecoin"},
     {"chain":"Weeds", "policy":"Sha256Chain",
-     "code3":"WDS", "address_version":"\xf3", "magic":"\xf8\xbf\xb5\xda"},
+     "code3":"Dow", "address_version":"\xf3", "magic":"\x1f\xbc\xc7\x4c"},
     {"chain":"BeerTokens", "policy":"Sha256Chain",
      "code3":"BER", "address_version":"\xf2", "magic":"\xf7\xbf\xb5\xdb"},
     {"chain":"SolidCoin", "policy":"Sha256Chain",
@@ -1071,8 +1071,8 @@ store._ddl['txout_approx'],
 
         if chain is not None:
             # Verify Merkle root.
-            #if b['hashMerkleRoot'] != chain.merkle_root(tx_hash_array):
-             #   raise MerkleRootMismatch(b['hash'], tx_hash_array)
+            if b['hashMerkleRoot'] != chain.merkle_root(tx_hash_array):
+               raise MerkleRootMismatch(b['hash'], tx_hash_array)
 
         # Look for the parent block.
         hashPrev = b['hashPrev']
