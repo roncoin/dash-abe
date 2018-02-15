@@ -60,7 +60,7 @@ CONFIG_DEFAULTS = {
 WORK_BITS = 304  # XXX more than necessary.
 
 CHAIN_CONFIG = [
-    {"chain":"Dagra"},
+    {"chain":"Dowin"},
     {"chain":"Testnet"},
     {"chain":"Namecoin"},
     {"chain":"Weeds", "policy":"Sha256Chain",
@@ -1071,8 +1071,8 @@ store._ddl['txout_approx'],
 
         if chain is not None:
             # Verify Merkle root.
-            if b['hashMerkleRoot'] != chain.merkle_root(tx_hash_array):
-                raise MerkleRootMismatch(b['hash'], tx_hash_array)
+            #if b['hashMerkleRoot'] != chain.merkle_root(tx_hash_array):
+             #   raise MerkleRootMismatch(b['hash'], tx_hash_array)
 
         # Look for the parent block.
         hashPrev = b['hashPrev']
